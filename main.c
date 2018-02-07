@@ -5,8 +5,9 @@
 
 int main(int argc, char **argv)
 {
-	if (argv[1] == 0)
+	if (argc != 5)
 	{
+		printf("Usage: corrupt [file] [corruption percentage] [start of area to corrupt] [end of area to corrupt]\n");
 		return 0;
 	}
 	
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
 	
 	while (fileCont[i] != EOF)
 	{
-		if (rand() % atoi(argv[2]) == 0 && i >= atoi(argv[3]) && i < atoi(argv[4]) && (char)fileCont[i] != 0)
+		if (rand() % 100 < atoi(argv[2]) && i >= atoi(argv[3]) && i < atoi(argv[4]) && (char)fileCont[i] != 0)
 		{
 			fputc(rand() % 255, file);
 			bts++;
