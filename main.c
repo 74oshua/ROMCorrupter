@@ -17,7 +17,13 @@ int main(int argc, char **argv)
 	
 	srand(time(NULL));
 	
-	FILE * file = fopen(argv[1], "r");
+	FILE * file = 0; 
+	file = fopen(argv[1], "r");
+	if (file == 0)
+	{
+		printf("Not a valid file\n");
+		return 0;
+	}
 	
 	do
 	{
@@ -35,7 +41,7 @@ int main(int argc, char **argv)
 	
 	while (fileCont[i] != EOF)
 	{
-		if (rand() % 100 < atoi(argv[2]) && i >= atoi(argv[3]) && i < atoi(argv[4]) && (char)fileCont[i] != 0)
+		if (rand() % 1000000 < atoi(argv[2]) && i >= atoi(argv[3]) && i < atoi(argv[4]) && (char)fileCont[i] != 0)
 		{
 			fputc(rand() % 255, file);
 			bts++;
